@@ -12,14 +12,14 @@ import org.springframework.data.neo4j.core.schema.*;
 @RelationshipProperties
 public class Distance {
     @RelationshipId
-    Long id;
+    String id;
     @Property
-    private float dist;
-    private float travelTime;
+    private Float dist;
+    private Float travelTime;
     @TargetNode
     private Site site;
 
-    public Distance(float dist, float travelTime, Site to) {
+    public Distance(Float dist, Float travelTime, Site to) {
         this.dist = dist;
         this.travelTime = travelTime;
         this.site = to;

@@ -9,6 +9,7 @@ import org.springframework.data.neo4j.core.schema.Relationship;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -17,12 +18,11 @@ import java.util.List;
 
 public class Site {
     @Id
-    @GeneratedValue
-    Long id;
+    UUID id;
     String name;
     Float latitude;
     Float longitude;
-    Boolean is_paralympic;
+    Boolean isParalympic;
 
     @Relationship(type = "DISTANCE_TO", direction = Relationship.Direction.OUTGOING)
     private List<Distance> distances = new ArrayList<>();;
@@ -31,16 +31,17 @@ public class Site {
         this.name = name;
         this.latitude = 0.0F;
         this.longitude = 0.0F;
-        this.is_paralympic = false;
+        this.isParalympic = false;
     }
     public Site(String name, Float latitude, Float longitude, Boolean isParalympic) {
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.is_paralympic = isParalympic;
+        this.isParalympic = isParalympic;
     }
 
     public void addDistance(Distance distance){
         this.distances.add(distance);
     }
+
 }

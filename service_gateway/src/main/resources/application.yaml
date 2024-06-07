@@ -1,0 +1,33 @@
+
+server:
+  port: 8081
+  servlet:
+    context-path: /
+
+spring:
+  main:
+    web-application-type: reactive
+
+
+  cloud:
+    gateway:
+      routes:
+        - id: mongo-route
+          uri: http://localhost:8080
+          predicates:
+            - Path=/api/mongo/**
+            - Path=/api/mongo/**
+        - id: noe4j-route
+          uri: http://localhost:8083
+          predicates:
+            - Path=/api/neo4j/**
+            - Path=/api/neo4j/**
+            - Path=/api/neo4j/**
+        - id: post-route
+          uri: http://localhost:8082
+          predicates:
+            - Path=/api/postgres/**
+            - Path=/api/postgres/**
+
+    discovery:
+      enabled: true

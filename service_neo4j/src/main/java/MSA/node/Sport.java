@@ -7,6 +7,7 @@ import org.springframework.data.neo4j.core.schema.Relationship;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -15,7 +16,7 @@ import java.util.List;
 public class Sport {
 
     @Id
-    Long id;
+    UUID id;
     String name;
 
     @Relationship(type = "ORGANIZES", direction = Relationship.Direction.OUTGOING)

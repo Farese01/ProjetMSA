@@ -8,6 +8,7 @@ import org.springframework.data.neo4j.core.schema.Relationship;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -15,8 +16,8 @@ import java.util.List;
 @Node("Event")
 public class Event {
     @Id
-    Long id;
-    LocalDate date;
+    UUID id;
+    String date;
 
     @Relationship(type = "LOCATED_AT", direction = Relationship.Direction.OUTGOING)
     private List<Site> sites = new ArrayList<>();
